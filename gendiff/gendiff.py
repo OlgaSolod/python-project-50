@@ -1,12 +1,15 @@
 from itertools import chain
+import json
 
 
-def generate_diff(file1, file2):
-    
+def generate_diff(first_path, second_path):
+    file1 = json.load(open(first_path))
+    file2 = json.load(open(second_path))
     common_keys = set(file1) & set(file2)
     only_first_keys = set(file1) - set(file2)
     only_second_keys = set(file2) - set(file1)
     all_keys = set(file1.items()) | set(file2.items())
+
     def inner_():
         lines = []
         indent = '    '
@@ -36,4 +39,3 @@ def generate_diff(file1, file2):
         result = chain('{', lines, '}')
         return '\n'.join(result)
     return inner_()
-
