@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/OlgaSolod/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/OlgaSolod/python-project-50/actions)
 
 ### Github actions
-
+[![check lint & test](https://github.com/OlgaSolod/python-project-50/actions/workflows/check.yml/badge.svg?branch=dev)](https://github.com/OlgaSolod/python-project-50/actions/workflows/check.yml)
 
 ### Code Climate:
 [![Maintainability](https://api.codeclimate.com/v1/badges/f48470d18c96bfd4a048/maintainability)](https://codeclimate.com/github/OlgaSolod/python-project-50/maintainability)
