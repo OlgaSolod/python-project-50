@@ -1,7 +1,9 @@
 name: check lint & test
 
 on: 
-  push
+  push:
+    branches:
+    - 'dev'
 
 
 jobs:
