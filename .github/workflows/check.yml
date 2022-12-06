@@ -17,6 +17,10 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
+      - name: Install python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - run: poetry install
       - run: make test
       - run: make lint
