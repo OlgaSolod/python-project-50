@@ -22,7 +22,7 @@ jobs:
       - name: Install poetry
         uses: snok/install-poetry@v1
       - run: poetry install
-      - run: poetry install --dev
+      - run: poetry install --only dev
       - run: make test
       - run: make lint
 
