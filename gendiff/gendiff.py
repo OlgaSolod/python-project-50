@@ -2,40 +2,58 @@ from itertools import chain
 import json
 
 
-def generate_diff(first_path, second_path):
-    file1 = json.load(open(first_path))
-    file2 = json.load(open(second_path))
-    common_keys = set(file1) & set(file2)
-    only_first_keys = set(file1) - set(file2)
-    only_second_keys = set(file2) - set(file1)
-    all_keys = set(file1.items()) | set(file2.items())
+def generate_diff(filepath1, filepath2):
+    file1 = json.load(open(filepath1))
+    file2 = json.load(open(filepath2))
+    all_keys = set(file1) | set(file2)
+    indent = '    '
+    indent_neg = '  - '
+    indent_pos = '  + '
 
-    def inner_():
-        lines = []
-        indent = '    '
-        indent_neg = '  - '
-        indent_pos = '  + '
+    diff = get_diff(all_keys, file1, file2)
+    lines = []
+    for elem in diff:
+        for key, value in elem.items():
+            k, v = value
+            v = transform_bool(v)
+            if key == 'removed':
+                line = create_line(indent_neg, k, v)
 
-        for elem in sorted(all_keys):
-            key, value = elem
-            if isinstance(value, bool):
-                value = str(value).lower()
-            if key in common_keys:
-                if file1.get(key) == file2.get(key):
-                    line = f'{indent}{key}: {value}'
-                    lines.append(line)
-                else:
-                    line1 = f'{indent_neg}{key}: {file1.get(key)}'
-                    line2 = f'{indent_pos}{key}: {file2.get(key)}'
-                    lines.append(line1)
-                    lines.append(line2)
-                    common_keys.discard(key)
-            elif key in only_first_keys:
-                line = line = f'{indent_neg}{key}: {value}'
-                lines.append(line)
-            elif key in only_second_keys:
-                line = line = f'{indent_pos}{key}: {value}'
-                lines.append(line)
-        result = chain('{', lines, '}')
-        return '\n'.join(result)
-    return inner_()
+            elif key == 'added':
+                line = create_line(indent_pos, k, v)
+
+            elif key == 'unchanged':
+                line = create_line(indent, k, v)
+            elif key == 'changed -':
+                line = create_line(indent_neg, k, v)
+            else:
+                line = create_line(indent_pos, k, v)
+
+        lines.append(line)
+    result = chain('{', lines, '}')
+    return '\n'.join(result)
+
+
+def get_diff(all_keys, file1, file2):
+    diff = []
+    for key in sorted(all_keys):
+        if key not in file1:
+            diff.append({'added': (key, file2.get(key))})
+        elif key not in file2:
+            diff.append({'removed': (key, file1.get(key))})
+        elif file1.get(key) == file2.get(key):
+            diff.append({'unchanged': (key, file1.get(key))})
+        else:
+            diff.append({'changed -': (key, file1.get(key))})
+            diff.append({'changed +': (key, file2.get(key))})
+    return diff
+
+
+def transform_bool(value):
+    if isinstance(value, bool):
+        value = str(value).lower()
+    return value
+
+
+def create_line(indent, key, value):
+    return f'{indent}{key}: {value}'
