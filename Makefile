@@ -5,4 +5,4 @@ test:
 		poetry run python3 -m pytest tests/test_gendiff.py 
 
 test-coverage:
-		poetry run python3 -m coverage xml
+		poetry run python3 -m pytest --cov=gendiff --cov-report xml
