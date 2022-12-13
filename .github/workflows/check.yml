@@ -26,12 +26,12 @@ jobs:
     name: Code Climate Coverage Action
     runs-on: ubuntu-latest
     steps:
-      uses: paambaati/codeclimate-action@v3.2.0
+      - uses: paambaati/codeclimate-action@v3.2.0
       env:
         CC_TEST_REPORTER_ID: 79b33636d6ee8b9ced3d4aa5af9bcd88819ffbeb95aa001cb0888701216d1845
       with:
-      coverageCommand: npm run coverage
-      debug: true
+        coverageCommand: npm run coverage
+        debug: true
 
 
 
