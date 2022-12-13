@@ -23,6 +23,9 @@ jobs:
       - run: make lint
 
       - name: Code Climate Coverage Action
+      - run: npm install -g yarn
+      - run: yarn install
+      - run: yarn build
         uses: paambaati/codeclimate-action@v3.2.0
         if: github.ref_name == 'dev'
         env:
