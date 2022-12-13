@@ -3,3 +3,6 @@ lint:
 
 test:
 		poetry run python3 -m pytest tests/test_gendiff.py 
+
+test-coverage:
+		poetry run python3 -m coverage xml
