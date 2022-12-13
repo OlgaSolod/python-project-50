@@ -21,12 +21,9 @@ jobs:
       - run: poetry install --only dev
       - run: make test
       - run: make lint
-  coverage:
-    needs: build
-    name: Code Climate Coverage Action
-    runs-on: ubuntu-latest
-    steps:
-      - uses: paambaati/codeclimate-action@v3.2.0
+
+      - name: Code Climate Coverage Action
+          uses: paambaati/codeclimate-action@v3.2.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
