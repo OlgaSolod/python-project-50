@@ -8,7 +8,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f48470d18c96bfd4a048/maintainability)](https://codeclimate.com/github/OlgaSolod/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f48470d18c96bfd4a048/test_coverage)](https://codeclimate.com/github/OlgaSolod/python-project-50/test_coverage)
 
-### ascinema with launch gendiff:
+### ascinema with launch gendiff and plain json (3 step):
 https://asciinema.org/a/WZAam92h6T4VoYhsrdwINdt6e
 
+### ascinema with launch gendiff and plain yml (5 step):
+https://asciinema.org/a/oZp53fWTkAM2ckz7O55rlcJgH
 

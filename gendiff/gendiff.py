@@ -1,10 +1,10 @@
 from itertools import chain
-import json
+from gendiff.parsing import parsing
 
 
 def generate_diff(filepath1, filepath2):
-    file1 = json.load(open(filepath1))
-    file2 = json.load(open(filepath2))
+    file1 = parsing(filepath1)
+    file2 = parsing(filepath2)
     all_keys = set(file1) | set(file2)
     difference = set(file1) - set(file2)
     added = set(file2) - set(file1)
@@ -14,9 +14,6 @@ def generate_diff(filepath1, filepath2):
     indent_pos = '  + '
 
     lines = []
-    print(general)
-    print(difference)
-    print(added)
     for elem in sorted(all_keys):
         if elem not in difference and elem in general:
             if file1.get(elem) == file2.get(elem):
@@ -32,7 +29,6 @@ def generate_diff(filepath1, filepath2):
             lines.append(line)
         else:
             line = create_line(indent_pos, elem, file2.get(elem))
-
             lines.append(line)
     result = chain('{', lines, '}')
     return '\n'.join(result)
