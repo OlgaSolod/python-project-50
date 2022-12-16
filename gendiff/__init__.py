@@ -1,6 +1,6 @@
 """Main module."""
 from gendiff.gendiff import generate_diff
-from gendiff.parsing import parsing
+from gendiff.modules.parsing import parsing
 
 
 __all__ = (

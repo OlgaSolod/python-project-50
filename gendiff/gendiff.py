@@ -1,5 +1,5 @@
 from itertools import chain
-from gendiff.parsing import parsing
+from gendiff.modules.parsing import parsing
 
 
 def generate_diff(filepath1, filepath2):

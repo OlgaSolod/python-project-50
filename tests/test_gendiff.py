@@ -1,7 +1,6 @@
 from gendiff import generate_diff
 
 
-
 json1 = 'tests/fixtures/file1.json'
 json2 = 'tests/fixtures/file2.json'
 
