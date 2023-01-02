@@ -1,8 +1,7 @@
 
 
 def make_diff(file1, file2):
-    
-    
+
     def inner_(dicti1, dicti2):
         diff = []
         all_keys = dicti1.keys() | dicti2.keys()
