@@ -8,7 +8,7 @@ def plain_format(diff):
         indent_neg = '  - '
         indent_pos = '  + '
         lines = []
-        print(dicti)
+       
 
     return inner_(diff)
 

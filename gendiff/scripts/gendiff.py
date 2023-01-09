@@ -15,7 +15,6 @@ def main():
     path1 = args.first_file
     path2 = args.second_file
     diff = generate_diff(path1, path2)
-    print(diff)
 
 
 if __name__ == '__main__':
