@@ -7,27 +7,20 @@ def generate_diff(path1, path2):
     general_set = set(dict1) | set(dict2)
     new_list = []
     for key in sorted(general_set):
-        if key in dict1:
-            if key in dict2:
-                if dict2.get(key) == dict1.get(key):
-                    val = change_bool(dict1.get(key))
-                    string = f'    {key}: {val}'
-                    new_list.append(string)
-                else:
-                    val1 = change_bool(dict1.get(key))
-                    val2 = change_bool(dict2.get(key))
-                    string1 = f'    {key}: {val1}'
-                    string2 = f'  + {key}: {val2}'
-                    new_list.append(string1)
-                    new_list.append(string2)
-            else:
+        if key in dict1 and key in dict2:
+            if dict1[key] == dict2[key]:
                 val = change_bool(dict1.get(key))
-                string = f'  - {key}: {val}'
-                new_list.append(string)
+                new_list.append(f'    {key}: {val}')
+            else:
+                val1 = change_bool(dict1.get(key))
+                val2 = change_bool(dict2.get(key))
+                new_list.extend([f'  - {key}: {val1}', f'  + {key}: {val2}'])
+        elif key in dict1:
+            val = change_bool(dict1.get(key))
+            new_list.append(f'  - {key}: {val}')
         else:
             val = change_bool(dict2.get(key))
-            string = f'  + {key}: {val}' 
-            new_list.append(string)
+            new_list.append(f'  + {key}: {val}')
     result = '{\n' + '\n'.join(new_list) + '\n}'
     return result
 
