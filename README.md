@@ -5,6 +5,9 @@
 ### Step 3:
 [![asciicast](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe.svg)](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe)
 
+### Step 5:
+[![asciicast](https://asciinema.org/a/Dl9GuC4o4NfoQjj5X1ZRbltPt.svg)](https://asciinema.org/a/Dl9GuC4o4NfoQjj5X1ZRbltPt)
+
 
 ### Code Climate:
 [![Maintainability](https://api.codeclimate.com/v1/badges/24888c725e31f81b77d3/maintainability)](https://codeclimate.com/github/OlgaSolod/python-project-50/maintainability)

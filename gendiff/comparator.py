@@ -1,9 +1,8 @@
-import json
+from gendiff.parser import parse_data
 
 
 def generate_diff(path1, path2):
-    dict1 = json.load(open(path1))
-    dict2 = json.load(open(path2))
+    dict1, dict2 = parse_data(path1, path2)
     general_set = set(dict1) | set(dict2)
     new_list = []
     for key in sorted(general_set):

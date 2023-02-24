@@ -4,10 +4,13 @@ import pytest
 test_data = [
     ("tests/fixtures/json1.json",
      "tests/fixtures/json2.json",
-     "tests/fixtures/result_json1.txt"),
+     "tests/fixtures/result_1.txt"),
     ("tests/fixtures/json3.json",
      "tests/fixtures/json4.json",
-     "tests/fixtures/result_json2.txt")
+     "tests/fixtures/result_2.txt"),
+    ("tests/fixtures/yaml1.yml",
+     "tests/fixtures/yaml2.yml",
+     "tests/fixtures/result_1.txt")
 ]
 
 
