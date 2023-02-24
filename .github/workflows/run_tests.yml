@@ -8,34 +8,11 @@ jobs:
         run: curl -sSL https://install.python-poetry.org | python3 -
       - uses: actions/checkout@v3
       - run: poetry install
-      
-
-  tests:
-    needs: [ build ] 
-    runs-on: ubuntu-latest
-    steps:
-      - run: make test
-  
-  linter:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps: 
-      - run: make lint
-  
-  coverage: 
-    needs: [ tests ]
-    name: coverage
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-      with:
-        node-version: '12'
-    - run: npm install -g yarn
-    - run: yarn install
-    - run: yarn build
-    - uses: paambaati/codeclimate-action@v2.2.4
-      env:
-        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-      with:
-        coverageCommand: yarn coverage
+      - name: linter
+        run: make lint
+      - name: coverage & tests
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: make test
