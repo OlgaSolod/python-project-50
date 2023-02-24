@@ -2,4 +2,4 @@ lint:
 	poetry run flake8 
 
 test: 
-	poetry run pytest --cov=gendiff tests/
+	poetry run pytest --cov=gendiff --cov-report xml
