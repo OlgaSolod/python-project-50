@@ -10,9 +10,9 @@ jobs:
       - run: poetry install
       - name: linter
         run: make lint
-      - name: coverage & tests
+      - name: Code Climate Coverage Action
         uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
-          coverageCommand: yarn coverage
+          coverageCommand: make test
