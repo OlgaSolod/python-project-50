@@ -8,8 +8,10 @@ jobs:
         run: curl -sSL https://install.python-poetry.org | python3 -
       - uses: actions/checkout@v3
       - run: poetry install
-      - name: linter
+      - name: Linter
         run: make lint
+      - name: TestS
+        run: make tests
       - name: Code Climate Coverage Action
         uses: paambaati/codeclimate-action@v3.1.1
         env:
