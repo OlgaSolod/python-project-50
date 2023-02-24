@@ -3,7 +3,7 @@
 
 
 ### Step 3:
-[![asciicast](https://asciinema.org/a/guLsbV9ilZkM0IJPyM3PXMQfs.svg)](https://asciinema.org/a/guLsbV9ilZkM0IJPyM3PXMQfs)
+[![asciicast](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe.svg)](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe)
 
 
 ### Code Climate:
