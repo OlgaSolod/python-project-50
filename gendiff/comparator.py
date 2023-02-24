@@ -16,7 +16,7 @@ def generate_diff(path1, path2):
                 else:
                     val1 = change_bool(dict1.get(key))
                     val2 = change_bool(dict2.get(key))
-                    string1 = f'    {key}: {val1}'
+                    string1 = f'  - {key}: {val1}'
                     string2 = f'  + {key}: {val2}'
                     new_list.append(string1)
                     new_list.append(string2)
