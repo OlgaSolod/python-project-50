@@ -1,10 +1,13 @@
 from gendiff.comparator import generate_diff
 import pytest
-import os
 
 test_data = [
-    ("tests/fixtures/json1.json", "tests/fixtures/json2.json", "tests/fixtures/result_json1.txt"),
-    ("tests/fixtures/json3.json", "tests/fixtures/json4.json", "tests/fixtures/result_json2.txt")
+    ("tests/fixtures/json1.json",
+     "tests/fixtures/json2.json",
+     "tests/fixtures/result_json1.txt"),
+    ("tests/fixtures/json3.json",
+     "tests/fixtures/json4.json",
+     "tests/fixtures/result_json2.txt")
 ]
 
 
