@@ -1,28 +1,27 @@
 from gendiff.parser import parse_data
 import json
+#from gendiff.stylish import formatter
+
 
 def generate_diff(path1, path2):
     dict1, dict2 = parse_data(path1, path2)
     def iter_(dict1, dict2):
-        lines = {}
-        for key in dict1:
-            if key in dict2:
-                if isinstance(dict1.get(key), dict) and isinstance(dict2.get(key), dict):
-                    lines[key] = (f'{iter_(dict1.get(key), dict2.get(key))}')
-                elif dict1.get(key) == dict2.get(key):
-                    lines['unchanged']=lines.get('unchanged', []) + [f' {key}: {dict2.get(key)}']
+        diff = []
+        for key in sorted(set(dict1.keys()) | set(dict2.keys())):
+            if key in dict1 and key not in dict2:
+                diff.append({'added': {key: dict1[key]}})
+            elif key in dict2 and key not in dict1:
+                diff.append({'removed': {key: dict2[key]}})
+            elif dict1[key] != dict2[key]:
+                if isinstance(dict1[key], dict) and isinstance(dict2[key], dict):
+                    diff.append(({key: iter_(dict1[key], dict2[key])}))
                 else:
-                    lines['changed']=lines.get('changed', []) + [
-                        f'- {key}: {dict1.get(key)}',
-                        f'+ {key}: {dict2.get(key)}'
-                    ]
-            elif key not in dict2:
-                lines['removed']= lines.get('removed', []) + [f'- {key}: {dict1.get(key)}']
-        for key in dict2:
-            if key not in dict1:
-                lines['added']= lines.get('added', []) + [(f'+ {key}: {dict2.get(key)}')]
-        return lines
+                    diff.append({'changed': {key: (dict1.get(key),dict2.get(key))}})
+            else:
+                diff.append({key: dict1[key]})
+        return diff
     return iter_(dict1, dict2)
 
+print(generate_diff('tests/fixtures/plain1.json', 'tests/fixtures/plain2.json'))
 
-print(json.dumps(generate_diff('tests/fixtures/nested3.json', 'tests/fixtures/nested4.json')))
+#formatter(generate_diff('tests/fixtures/nested1.json', 'tests/fixtures/nested2.json'))
