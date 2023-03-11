@@ -1,5 +1,5 @@
-from gendiff.comparator import generate_diff
-from gendiff.stylish import formatter
+from gendiff.generate_diff import generate_diff
+from gendiff.formatters.stylish import stylish
 import pytest
 
 test_data_plain = [
@@ -22,12 +22,12 @@ test_data_nested = [
 
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_plain)
 def test_plain(file_path1, file_path2, expected):
-    actual_result = formatter(generate_diff(file_path1, file_path2))
+    actual_result = stylish(generate_diff(file_path1, file_path2))
     with open(expected, 'r') as f:
         assert actual_result == f.read(), 'actual result is wrong'
 
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_nested)
 def test_nested(file_path1, file_path2, expected):
-    actual_result = formatter(generate_diff(file_path1, file_path2))
+    actual_result = stylish(generate_diff(file_path1, file_path2))
     with open(expected, 'r') as f:
         assert actual_result == f.read(), 'actual result is wrong'

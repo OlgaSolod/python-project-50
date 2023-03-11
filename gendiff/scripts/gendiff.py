@@ -1,6 +1,5 @@
 import argparse
-from gendiff.comparator import generate_diff
-from gendiff.stylish import formatter
+from gendiff.generate_diff import generate_diff
 
 
 def main():
@@ -10,9 +9,13 @@ def main():
     )
     parser.add_argument('first_file')
     parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', help='set format of output: stylish', default='stylish.py')
+    parser.add_argument(
+        '-f', '--format',
+        help='set format of output: stylish',
+        default='stylish')
     args = parser.parse_args()
-    print(formatter(generate_diff(args.first_file, args.second_file)))
+    diff = generate_diff(args.first_file, args.second_file, args.format)
+    return print(diff)
 
 
 if __name__ == '__main__':

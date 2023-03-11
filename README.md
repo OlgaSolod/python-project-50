@@ -8,6 +8,9 @@
 ### Step 5:
 [![asciicast](https://asciinema.org/a/Dl9GuC4o4NfoQjj5X1ZRbltPt.svg)](https://asciinema.org/a/Dl9GuC4o4NfoQjj5X1ZRbltPt)
 
+### Step 6:
+[![asciicast](https://asciinema.org/a/t9HIrahxvXgRlrJlXXaBhsFhV.svg)](https://asciinema.org/a/t9HIrahxvXgRlrJlXXaBhsFhV)
+
 
 ### Code Climate:
 [![Maintainability](https://api.codeclimate.com/v1/badges/24888c725e31f81b77d3/maintainability)](https://codeclimate.com/github/OlgaSolod/python-project-50/maintainability)
