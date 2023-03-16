@@ -1,6 +1,16 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/OlgaSolod/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/OlgaSolod/python-project-50/actions)
 
+### Проект "Вычислитель отличий"
+Вычисляет разницу между двумя файлами и выводит в выбранном пользователем формате: stylish, plain или json.
+
+### Вывод справки:
+gendiff -h
+
+### Пример запуска:
+gendiff -f [format] filepath1 filepath2
+При запуске без указания формата по-умолчанию выбирается формат stylish.
+
 ### Step 3:
 [![asciicast](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe.svg)](https://asciinema.org/a/tFYj7XjhlJa4vrXY5cIn0EaIe)
 
