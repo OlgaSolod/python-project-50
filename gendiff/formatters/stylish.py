@@ -1,7 +1,7 @@
 from itertools import chain
 
 
-def stylish(value, space_counts=' ', counter=4):  # noqa: C901
+def make_stylish(value, space_counts=' ', counter=4):  # noqa: C901
     def iter_(current_value, depth):
         if not isinstance(current_value, dict):
             return change_value(current_value)
@@ -25,6 +25,10 @@ def stylish(value, space_counts=' ', counter=4):  # noqa: C901
                 elif val[0] == 'unchanged':
                     lines.append(
                         f'{actual_indent}  {key}: {iter_(val[1], indent_size)}')
+                else:
+                    lines.append(
+                        f'{actual_indent}  {key}: {iter_(val[1], indent_size)}'
+                    )
             else:
                 lines.append(
                     f'{actual_indent}  {key}: {iter_(val, indent_size)}')

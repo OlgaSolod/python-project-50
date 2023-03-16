@@ -1,11 +1,14 @@
 from gendiff.parser import parse_data
-from gendiff.formatters.stylish import stylish
+from gendiff.formatters.stylish import make_stylish
+from gendiff.formatters.plain import make_plain
 
 
 def generate_diff(path1, path2, format='stylish'):
     dict1, dict2 = parse_data(path1, path2)
     if format == 'stylish':
-        return stylish(compare_dicts(dict1, dict2))
+        return make_stylish(compare_dicts(dict1, dict2))
+    elif format == 'plain':
+        return make_plain(compare_dicts(dict1, dict2))
 
 
 def compare_dicts(dict1, dict2):
