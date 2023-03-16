@@ -13,6 +13,10 @@
 ### Step 7:
 [![asciicast](https://asciinema.org/a/xa5ya8ewsERAh8xsKCtzX4mCI.svg)](https://asciinema.org/a/xa5ya8ewsERAh8xsKCtzX4mCI)
 
+
+### Step 8:
+[![asciicast](https://asciinema.org/a/12j1cnbGogOlKrFeUpRsGxO8c.svg)](https://asciinema.org/a/12j1cnbGogOlKrFeUpRsGxO8c)
+
 ### Code Climate:
 [![Maintainability](https://api.codeclimate.com/v1/badges/24888c725e31f81b77d3/maintainability)](https://codeclimate.com/github/OlgaSolod/python-project-50/maintainability)
 

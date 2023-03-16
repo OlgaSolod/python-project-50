@@ -1,6 +1,7 @@
 from gendiff.parser import parse_data
 from gendiff.formatters.stylish import make_stylish
 from gendiff.formatters.plain import make_plain
+from gendiff.formatters.json_formatter import make_json
 
 
 def generate_diff(path1, path2, format='stylish'):
@@ -9,6 +10,8 @@ def generate_diff(path1, path2, format='stylish'):
         return make_stylish(compare_dicts(dict1, dict2))
     elif format == 'plain':
         return make_plain(compare_dicts(dict1, dict2))
+    elif format == 'json':
+        return make_json(compare_dicts(dict1, dict2))
 
 
 def compare_dicts(dict1, dict2):
