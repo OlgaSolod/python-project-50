@@ -1,6 +1,6 @@
 from gendiff.generate_diff import generate_diff
 import pytest
-import json
+
 
 test_data_plain = [
     ("tests/fixtures/plain1.json",
@@ -38,11 +38,13 @@ test_data_json = [
      "tests/fixtures/json.txt")
 ]
 
+
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_plain)
 def test_plain(file_path1, file_path2, expected):
     actual_result = generate_diff(file_path1, file_path2)
     with open(expected, 'r') as f:
         assert actual_result == f.read(), 'actual result is wrong'
+
 
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_nested)
 def test_nested(file_path1, file_path2, expected):
@@ -50,11 +52,13 @@ def test_nested(file_path1, file_path2, expected):
     with open(expected, 'r') as f:
         assert actual_result == f.read(), 'actual result is wrong'
 
+
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_plain_)
 def test_plain_(file_path1, file_path2, expected):
     actual_result = generate_diff(file_path1, file_path2, 'plain')
     with open(expected, 'r') as f:
         assert actual_result == f.read(), 'actual result is wrong'
+
 
 @pytest.mark.parametrize('file_path1, file_path2, expected', test_data_json)
 def test_json(file_path1, file_path2, expected):
