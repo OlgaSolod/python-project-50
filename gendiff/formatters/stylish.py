@@ -11,7 +11,11 @@ def format_stylish(value, space_counts=' ', counter=4):  # noqa: C901
         previous_indent = space_counts * depth
         for key, val in current_value.items():
             if isinstance(val, tuple):
-                if val[0] == 'added':
+                if val[0] == 'nested':
+                    lines.append(
+                        f'{actual_indent} {key}: {iter_(val[1], indent_size)}'
+                    )
+                elif val[0] == 'added':
                     lines.append(
                         f'{actual_indent}+ {key}: {iter_(val[1], indent_size)}')
                 elif val[0] == 'removed':
@@ -25,10 +29,6 @@ def format_stylish(value, space_counts=' ', counter=4):  # noqa: C901
                 elif val[0] == 'unchanged':
                     lines.append(
                         f'{actual_indent}  {key}: {iter_(val[1], indent_size)}')
-                else:
-                    lines.append(
-                        f'{actual_indent}  {key}: {iter_(val[1], indent_size)}'
-                    )
             else:
                 lines.append(
                     f'{actual_indent}  {key}: {iter_(val, indent_size)}')
