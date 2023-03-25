@@ -1,6 +1,6 @@
 __pycache__/
 dist/
 .venv
-
 *.xml
 poetry.lock
+.coverage

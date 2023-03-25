@@ -1,10 +1,10 @@
 from itertools import chain
 
 
-def make_stylish(value, space_counts=' ', counter=4):  # noqa: C901
+def format_stylish(value, space_counts=' ', counter=4):  # noqa: C901
     def iter_(current_value, depth):
         if not isinstance(current_value, dict):
-            return change_value(current_value)
+            return to_string(current_value)
         lines = []
         indent_size = depth + counter
         actual_indent = space_counts * (indent_size - 2)
@@ -37,7 +37,7 @@ def make_stylish(value, space_counts=' ', counter=4):  # noqa: C901
     return iter_(value, 0)
 
 
-def change_value(value):
+def to_string(value):
     if isinstance(value, (bool, int)):
         return str(value).lower()
     elif value is None:

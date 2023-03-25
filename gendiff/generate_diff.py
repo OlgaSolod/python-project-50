@@ -1,20 +1,20 @@
-from gendiff.parser import parse_data
-from gendiff.formatters.stylish import make_stylish
-from gendiff.formatters.plain import make_plain
-from gendiff.formatters.json_formatter import make_json
+from gendiff.reading import reading_files
+from gendiff.formatters.stylish import format_stylish
+from gendiff.formatters.plain import format_plain
+from gendiff.formatters.json_formatter import format_json
 
 
 def generate_diff(path1, path2, format='stylish'):
-    dict1, dict2 = parse_data(path1, path2)
+    dict1, dict2 = reading_files(path1, path2)
     if format == 'stylish':
-        return make_stylish(compare_dicts(dict1, dict2))
+        return format_stylish(build_tree(dict1, dict2))
     elif format == 'plain':
-        return make_plain(compare_dicts(dict1, dict2))
+        return format_plain(build_tree(dict1, dict2))
     elif format == 'json':
-        return make_json(compare_dicts(dict1, dict2))
+        return format_json(build_tree(dict1, dict2))
 
 
-def compare_dicts(dict1, dict2):
+def build_tree(dict1, dict2):
     diff = {}
     for key in sorted(set(dict1.keys()) | set(dict2.keys())):
         if is_removed(key, dict1, dict2):
@@ -23,7 +23,7 @@ def compare_dicts(dict1, dict2):
             diff[key] = ('added', dict2[key])
         elif is_changed(key, dict1, dict2):
             if is_dict(dict1[key]) and is_dict(dict2[key]):
-                diff[key] = compare_dicts(dict1[key], dict2[key])
+                diff[key] = build_tree(dict1[key], dict2[key])
             else:
                 diff[key] = ('changed', dict1[key], dict2[key])
         else:

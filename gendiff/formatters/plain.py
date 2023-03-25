@@ -1,4 +1,4 @@
-def change_value(value):
+def to_string(value):
     if isinstance(value, (bool, int)):
         return str(value).lower()
     elif isinstance(value, dict):
@@ -9,7 +9,7 @@ def change_value(value):
         return f'\'{value}\''
 
 
-def make_plain(value):  # noqa: C901
+def format_plain(value):  # noqa: C901
     def iter_(keys, path):
         lines = []
         for key, val in keys.items():
@@ -17,7 +17,7 @@ def make_plain(value):  # noqa: C901
                 if val[0] == 'added':
                     lines.append(
                         f'Property \'{path + key}\' was added '
-                        f'with value: {change_value(val[1])}'
+                        f'with value: {to_string(val[1])}'
                     )
                 elif val[0] == 'removed':
                     lines.append(
@@ -26,7 +26,7 @@ def make_plain(value):  # noqa: C901
                 elif val[0] == 'changed':
                     lines.append(
                         f'Property \'{path + key}\' was updated. '
-                        f'From {change_value(val[1])} to {change_value(val[2])}'
+                        f'From {to_string(val[1])} to {to_string(val[2])}'
                     )
             else:
                 lines.append(iter_(val, path + key + '.'))
