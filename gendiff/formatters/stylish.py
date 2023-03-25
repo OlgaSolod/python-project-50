@@ -13,7 +13,7 @@ def format_stylish(value, space_counts=' ', counter=4):  # noqa: C901
             if isinstance(val, tuple):
                 if val[0] == 'nested':
                     lines.append(
-                        f'{actual_indent} {key}: {iter_(val[1], indent_size)}'
+                        f'{actual_indent}  {key}: {iter_(val[1], indent_size)}'
                     )
                 elif val[0] == 'added':
                     lines.append(
