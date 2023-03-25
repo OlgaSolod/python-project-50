@@ -64,4 +64,4 @@ def test_plain_(file_path1, file_path2, expected):
 def test_json(file_path1, file_path2, expected):
     actual_result = generate_diff(file_path1, file_path2, 'json')
     with open(expected, 'r') as f:
-       assert f.read() == actual_result, 'Test json is failed'
+        assert f.read() == actual_result, 'Test json is failed'
