@@ -6,6 +6,9 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/24888c725e31f81b77d3/test_coverage)](https://codeclimate.com/github/OlgaSolod/python-project-50/test_coverage)
 
+### My tests and linter:
+[![run tests and linter](https://github.com/OlgaSolod/python-project-50/actions/workflows/run_tests.yml/badge.svg)](https://github.com/OlgaSolod/python-project-50/actions/workflows/run_tests.yml)
+
 ### Проект "Вычислитель отличий"
 Вычисляет разницу между двумя файлами и выводит в выбранном пользователем формате: stylish, plain или json.
 
